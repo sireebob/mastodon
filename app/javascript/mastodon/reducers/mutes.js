@@ -24,7 +24,7 @@ export default function mutes(state = initialState, action) {
   case MUTES_TOGGLE_HIDE_NOTIFICATIONS:
     return state.updateIn(['new', 'notifications'], (old) => !old);
   case MUTES_CHANGE_DURATION:
-    return state.updateIn(['new', 'duration'], (old) => Number(action.duration));
+    return state.setIn(['new', 'duration'], Number(action.duration));
   default:
     return state;
   }

@@ -78,7 +78,6 @@ module AccountInteractions
     has_many :blocked_by, -> { order('blocks.id desc') }, through: :blocked_by_relationships, source: :account
 
     # Mute relationships
-    has_many :mutes
     has_many :mute_relationships, class_name: 'Mute', foreign_key: 'account_id', dependent: :destroy
     has_many :muting, -> { order('mutes.id desc') }, through: :mute_relationships, source: :target_account
     has_many :muted_by_relationships, class_name: 'Mute', foreign_key: :target_account_id, dependent: :destroy
@@ -120,7 +119,7 @@ module AccountInteractions
 
   def mute!(other_account, notifications: nil, duration: 0)
     notifications = true if notifications.nil?
-    mute = mutes.find_by(target_account: other_account)
+    mute = mute_relationships.find_by(target_account: other_account)
     expires_at = (duration.zero? ? nil : (Time.current + duration.seconds))
     if mute
       mute.update!(expires_at: expires_at)
