@@ -12,10 +12,7 @@ class MuteService < BaseService
       MuteWorker.perform_async(account.id, target_account.id)
     end
 
-    if duration != 0
-      jid = DeleteMuteWorker.perform_at(duration.seconds, account.id, target_account.id)
-      mute.update!(unmute_jid: jid)
-    end
+    DeleteMuteWorker.perform_at(duration.seconds, mute.id) if duration != 0
 
     mute
   end
