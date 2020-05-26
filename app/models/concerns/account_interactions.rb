@@ -119,13 +119,9 @@ module AccountInteractions
 
   def mute!(other_account, notifications: nil, duration: 0)
     notifications = true if notifications.nil?
-    mute = mute_relationships.find_by(target_account: other_account)
-    expires_at = (duration.zero? ? nil : (Time.current + duration.seconds))
-    if mute
-      mute.update!(expires_at: expires_at)
-    else
-      mute = mute_relationships.create_with(hide_notifications: notifications, expires_at: expires_at).find_or_create_by!(target_account: other_account)
-    end
+    mute = mute_relationships.create_with(hide_notifications: notifications).find_or_initialize_by(target_account: other_account)
+    mute.expires_in = duration if duration != 0
+    mute.save!
 
     remove_potential_friendship(other_account)
 
