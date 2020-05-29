@@ -20,10 +20,6 @@ class REST::AccountSerializer < ActiveModel::Serializer
 
   has_many :fields
 
-  def current_user?
-    defined?(current_user) && !current_user.nil?
-  end
-
   def id
     object.id.to_s
   end
