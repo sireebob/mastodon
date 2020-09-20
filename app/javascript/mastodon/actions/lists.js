@@ -108,7 +108,7 @@ export const submitListEditor = shouldReset => (dispatch, getState) => {
   if (listId === null) {
     dispatch(createList(title, shouldReset));
   } else {
-    dispatch(updateList(listId, title, shouldReset, isExclusive));
+    dispatch(updateList(listId, title, shouldReset, undefined, isExclusive));
   }
 };
 
@@ -160,7 +160,7 @@ export const createListFail = error => ({
 export const updateList = (id, title, shouldReset, replies_policy, isExclusive) => (dispatch, getState) => {
   dispatch(updateListRequest(id));
 
-  api(getState).put(`/api/v1/lists/${id}`, { title, replies_policy, is_exclusive: !!isExclusive }).then(({ data }) => {
+  api(getState).put(`/api/v1/lists/${id}`, { title, replies_policy, is_exclusive: isExclusive }).then(({ data }) => {
     dispatch(updateListSuccess(data));
 
     if (shouldReset) {
