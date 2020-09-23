@@ -1,3 +1,7 @@
+This is the [glitch-soc](https://github.com/glitch-soc/mastodon) fork sireebob is running at masto.nothing.rodeo.
+It has a few enhancements pulled in from other sources.
+- mute expirations ([iwatedon](https://github.com/iwatedon/mastodon/tree/muting_with_duration) by [aquarla](https://github.com/aquarla))
+- exclusive lists ([hometown](https://github.com/hometown-fork/hometown/commit/bfc0fbab2c94dc134715f555edf793991da172a2) by [dariusk](https://github.com/dariusk) // [ThibG](https://github.com/ThibG)'s [port](https://github.com/ThibG/mastodon/tree/glitch-soc/features/exclusive-lists))
 #  Mastodon Glitch Edition  #
 
 >   Now with automated deploys!
