@@ -15,7 +15,7 @@ const mapStateToProps = state => {
   const spoilerText = state.getIn(['compose', 'spoiler_text']);
   return {
     active: state.getIn(['compose', 'sensitive']) || (spoilersAlwaysOn && spoilerText && spoilerText.length > 0),
-    disabled: state.getIn(['compose', 'spoiler']),
+    disabled: false,
   };
 };
 

@@ -58,7 +58,7 @@ class PostStatusService < BaseService
        @text = '🖼'
      end
     end
-    @sensitive    = (@options[:sensitive].nil? ? @account.user&.setting_default_sensitive : @options[:sensitive]) || @options[:spoiler_text].present?
+    @sensitive    = (@options[:sensitive].nil? ? @account.user&.setting_default_sensitive : @options[:sensitive])
     @visibility   = @options[:visibility] || @account.user&.setting_default_privacy
     @visibility   = :unlisted if @visibility&.to_sym == :public && @account.silenced?
     @scheduled_at = @options[:scheduled_at]&.to_datetime
