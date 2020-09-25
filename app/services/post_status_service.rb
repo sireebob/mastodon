@@ -97,7 +97,7 @@ class PostStatusService < BaseService
   end
 
   def postprocess_status!
-    LinkCrawlWorker.perform_async(@status.id) unless @status.spoiler_text?
+    LinkCrawlWorker.perform_async(@status.id)
     DistributionWorker.perform_async(@status.id)
     ActivityPub::DistributionWorker.perform_async(@status.id) unless @status.local_only?
     PollExpirationNotifyWorker.perform_at(@status.poll.expires_at, @status.poll.id) if @status.poll
