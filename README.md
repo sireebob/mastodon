@@ -5,6 +5,7 @@ It has a few enhancements pulled in from other sources.
 
 It also has a simple homegrown change:
 - use CWs without image marked as sensitive ([sireebob](https://github.com/sireebob/mastodon/tree/nothing-rodeo/features/sireebob/use_cw_without_image_marked_sensitive))
+- load preview cards for posts with CWs ([sireebob](https://github.com/sireebob/mastodon/tree/nothing-rodeo/features/sireebob/preview_cards_with_cws))
 
 Generally, you can see the features beyond glitch-soc that have been pulled in if you look at the branches that start with "nothing-rodeo/features". Is that a normal way of doing things? Who knows! Probably not!
 
