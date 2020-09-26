@@ -12,6 +12,9 @@ const messages = defineMessages({
   minutes: { id: 'intervals.full.minutes', defaultMessage: '{number, plural, one {# minute} other {# minutes}}' },
   hours: { id: 'intervals.full.hours', defaultMessage: '{number, plural, one {# hour} other {# hours}}' },
   days: { id: 'intervals.full.days', defaultMessage: '{number, plural, one {# day} other {# days}}' },
+  weeks: { id: 'intervals.full.week', defaultMessage: '{number, plural, one {# week} other {# weeks}}' },
+  months: { id: 'intervals.full.months', defaultMessage: '{number, plural, one {# month} other {# months}}' },
+  years: { id: 'intervals.full.years', defaultMessage: '{number, plural, one {# year} other {# years}}' },
 });
 
 const mapStateToProps = state => {
@@ -119,7 +122,13 @@ class MuteModal extends React.PureComponent {
               <option value={21600}>{intl.formatMessage(messages.hours, { number: 6 })}</option>
               <option value={86400}>{intl.formatMessage(messages.days, { number: 1 })}</option>
               <option value={259200}>{intl.formatMessage(messages.days, { number: 3 })}</option>
-              <option value={604800}>{intl.formatMessage(messages.days, { number: 7 })}</option>
+              <option value={604800}>{intl.formatMessage(messages.weeks, { number: 1 })}</option>
+              <option value={1209600}>{intl.formatMessage(messages.weeks, { number: 2 })}</option>
+              <option value={2592000}>{intl.formatMessage(messages.months, { number: 1 })}</option>
+              <option value={5184000}>{intl.formatMessage(messages.months, { number: 2 })}</option>
+              <option value={7776000}>{intl.formatMessage(messages.months, { number: 3 })}</option>
+              <option value={15552000}>{intl.formatMessage(messages.months, { number: 6 })}</option>
+              <option value={31536000}>{intl.formatMessage(messages.years, { number: 1 })}</option>
             </select>
           </div>
         </div>
